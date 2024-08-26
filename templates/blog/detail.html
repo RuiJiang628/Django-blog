@@ -47,21 +47,10 @@
 {% endblock main %}
 
 {% block toc %}
-    <div class="widget widget-content">
-        <h3 class="widget-title">Catalog</h3>
-        <ul>
-            <li>
-                <a href="#">Audience</a>
-            </li>
-            <li>
-                <a href="#">Preview</a>
-            </li>
-            <li>
-                <a href="#">Resources</a>
-            </li>
-            <li>
-                <a href="#">Guidance</a>
-            </li>
-        </ul>
-    </div>
+    {% if post.toc %}
+        <div class="widget widget-content">
+            <h3 class="widget-title">Catalog</h3>
+            {{ post.toc | safe }}
+        </div>
+    {% endif %}
 {% endblock toc %}
