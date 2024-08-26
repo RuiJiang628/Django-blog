@@ -4,7 +4,9 @@ from django.db import models
 
 from django.contrib.auth.models import User
 from django.urls import reverse
-from django.utils import timezone
+from django.utils import timezone, html
+from django.utils.html import strip_tags
+import markdown
 
 # each post belongs to a category, and each category can have multiple posts
 class Category(models.Model):
@@ -37,6 +39,12 @@ class Post(models.Model):
     
     def save(self, *args, **kwargs):
         self.modified_time = timezone.now()
+        if not self.excerpt:
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ])
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
