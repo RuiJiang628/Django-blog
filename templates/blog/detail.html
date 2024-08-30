@@ -10,8 +10,8 @@
         <span class="post-date"><a href="#"><time class="entry-date"
                                                   datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
         <span class="post-author"><a href="#">{{ post.author }}</a></span>
-        <span class="comments-link"><a href="#">4 Comment</a></span>
-        <span class="views-count"><a href="#">588 Read</a></span>
+        <span class="comments-link"><a href="#"> {{ post.comment_set.count }} {{ post.comment_set.count|pluralize:"Comment,Comments" }}</a></span>
+        <span class="views-count"><a>588 Read</a></span>
       </div>
     </header>
     <div class="entry-content clearfix">

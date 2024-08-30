@@ -1,0 +1,12 @@
+<div class="widget widget-Authors">
+    <h3 class="widget-title">Authors</h3>
+    <ul>
+        {% for author in Author_list %}
+            <li>
+                <a href="{% url 'blog:author' author.pk %}">{{ author.name }}</a>
+            </li>
+        {% empty %}
+            <li>This author has no post yet!</li>
+        {% endfor %}
+    </ul>
+</div>
